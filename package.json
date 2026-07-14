@@ -1,0 +1,13 @@
+{
+  "name": "ofb-order-csv-exporter",
+  "version": "1.0.0",
+  "private": true,
+  "license": "AGPL-3.0-only",
+  "description": "Export Oregon Food Bank Primarius order details as clean CSV files.",
+  "scripts": {
+    "test": "node test/export-core.test.js && node test/page-bridge.test.js && node --check content.js && node --check page-bridge.js && node --check export-core.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

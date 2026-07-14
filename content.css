@@ -1,0 +1,48 @@
+#ofb-export-csv-panel {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 12px;
+}
+
+#ofb-export-csv-button {
+  background: #176b3a;
+  border: 1px solid #10542d;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 18%);
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.25;
+  padding: 9px 14px;
+}
+
+#ofb-export-csv-button:hover {
+  background: #105c31;
+}
+
+#ofb-export-csv-button:focus-visible {
+  outline: 3px solid #83c5ff;
+  outline-offset: 2px;
+}
+
+#ofb-export-csv-button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+#ofb-export-csv-status {
+  color: #4d4d4d;
+  font-size: 13px;
+}
+
+#ofb-export-csv-status[data-type="success"] {
+  color: #176b3a;
+}
+
+#ofb-export-csv-status[data-type="error"] {
+  color: #a12622;
+  font-weight: 600;
+}

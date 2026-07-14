@@ -1,6 +1,6 @@
 # OFB Order CSV Exporter
 
-OFB Order CSV Exporter is a focused Chrome extension for Oregon Food Bank Primarius **View Order** pages. It adds an **Export Clean CSV** button and turns the complete order-detail table into an analysis-ready CSV without manual copying or cleanup.
+OFB Order CSV Exporter is a focused Chrome extension for Oregon Food Bank Primarius **View Order** pages. It adds an **Export as CSV** button and turns the complete order-detail table into an analysis-ready CSV without manual copying or cleanup.
 
 ## What it exports
 
@@ -34,10 +34,15 @@ The extension runs only on URLs matching `https://ofb.primarius.app/PWW/Order/*/
 
 1. Sign in to Primarius normally.
 2. Open **Order History**, then select **View** for an order.
-3. Choose **Export Clean CSV** above the order-detail table.
+3. Choose **Export as CSV** above the order-detail table.
 4. Confirm that the status reports the expected exported row count.
 
+Choose the **Info** icon beside the export button for product details, credits,
+version, license, privacy information, and a link to the source code.
+
 The extension does not collect credentials, transmit order data to another service, or run outside the matching order-detail pages. See [PRIVACY.md](PRIVACY.md).
+
+For support, use the public [GitHub issue tracker](https://github.com/MattGeiger/ofb-order-csv-exporter/issues). Do not post order data or login information in a public issue.
 
 ## Reliability scope
 
@@ -54,6 +59,11 @@ npm test
 ```
 
 The private reconciliation data is deliberately excluded from this repository. Public tests use synthetic order rows.
+
+## Build a release
+
+Run `npm run build:release` to create a versioned Chrome Web Store ZIP in
+`dist/`. The package includes only runtime assets and project documentation.
 
 ## License
 

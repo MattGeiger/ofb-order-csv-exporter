@@ -1,8 +1,14 @@
 {
   "manifest_version": 3,
   "name": "OFB Order CSV Exporter",
-  "version": "1.0.0",
-  "description": "Exports Oregon Food Bank Primarius order details as a clean CSV file.",
+  "version": "1.0.1",
+  "description": "Exports Oregon Food Bank Primarius order details as a CSV file.",
+  "icons": {
+    "16": "assets/Logo 16x.png",
+    "32": "assets/Logo 32x.png",
+    "64": "assets/Logo 64x.png",
+    "128": "assets/Logo 128x.png"
+  },
   "content_scripts": [
     {
       "matches": [
@@ -26,6 +32,16 @@
         "content.css"
       ],
       "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/temple-logo-light.svg"
+      ],
+      "matches": [
+        "https://ofb.primarius.app/*"
+      ]
     }
   ]
 }

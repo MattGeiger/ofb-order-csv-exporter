@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.1
+
+- Add OFB extension icons and Temple Consulting credits.
+- Add an accessible About dialog with product, privacy, version, license, and source information.
+- Rename the primary action to **Export as CSV**.
+- Add Chrome Web Store release metadata, listing materials, and repeatable packaging.
+
 ## 1.0.0
 
 - Export the complete server-backed order table from any supported page-size view.

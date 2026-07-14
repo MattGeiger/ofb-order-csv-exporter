@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.2
+
+- Restyle the About dialog to match FEED's card, typography, spacing, backdrop, and controls.
+- Add linked Oregon Food Bank credit and a GitHub icon to the source button.
+- Derive the displayed version from the extension manifest.
+
 ## 1.0.1
 
 - Add OFB extension icons and Temple Consulting credits.

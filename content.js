@@ -190,6 +190,41 @@
     return icon;
   }
 
+  function createCloseIcon() {
+    const namespace = "http://www.w3.org/2000/svg";
+    const icon = document.createElementNS(namespace, "svg");
+    icon.setAttribute("viewBox", "0 0 24 24");
+    icon.setAttribute("fill", "none");
+    icon.setAttribute("stroke", "currentColor");
+    icon.setAttribute("stroke-width", "2");
+    icon.setAttribute("stroke-linecap", "round");
+    icon.setAttribute("aria-hidden", "true");
+    const first = document.createElementNS(namespace, "path");
+    first.setAttribute("d", "M18 6 6 18");
+    const second = document.createElementNS(namespace, "path");
+    second.setAttribute("d", "m6 6 12 12");
+    icon.append(first, second);
+    return icon;
+  }
+
+  function createGithubIcon() {
+    const namespace = "http://www.w3.org/2000/svg";
+    const icon = document.createElementNS(namespace, "svg");
+    icon.setAttribute("viewBox", "0 0 24 24");
+    icon.setAttribute("fill", "none");
+    icon.setAttribute("stroke", "currentColor");
+    icon.setAttribute("stroke-width", "2");
+    icon.setAttribute("stroke-linecap", "round");
+    icon.setAttribute("stroke-linejoin", "round");
+    icon.setAttribute("aria-hidden", "true");
+    const body = document.createElementNS(namespace, "path");
+    body.setAttribute("d", "M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.28 0 6.72-2 6.72-5.5A4.5 4.5 0 0 0 19.5 5.8 4.22 4.22 0 0 0 19.4 2S18.23 1.65 15 3.48a13.38 13.38 0 0 0-7 0C4.77 1.65 3.6 2 3.6 2a4.22 4.22 0 0 0-.1 3.8A4.5 4.5 0 0 0 2.28 9c0 3.5 3.44 5.5 6.72 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4");
+    const branch = document.createElementNS(namespace, "path");
+    branch.setAttribute("d", "M9 18c-4.51 2-5-2-7-2");
+    icon.append(body, branch);
+    return icon;
+  }
+
   function createAboutDialog() {
     const existing = document.getElementById(ABOUT_DIALOG_ID);
     if (existing) return existing;
@@ -197,56 +232,74 @@
     const dialog = document.createElement("dialog");
     dialog.id = ABOUT_DIALOG_ID;
     dialog.setAttribute("aria-labelledby", "ofb-export-about-title");
+    dialog.setAttribute("aria-describedby", "ofb-export-about-description");
 
     const closeButton = document.createElement("button");
     closeButton.id = "ofb-export-about-close";
     closeButton.type = "button";
     closeButton.setAttribute("aria-label", "Close About dialog");
-    closeButton.textContent = "×";
+    closeButton.append(createCloseIcon());
     closeButton.addEventListener("click", () => dialog.close());
+
+    const card = document.createElement("div");
+    card.id = "ofb-export-about-card";
 
     const logo = document.createElement("img");
     logo.id = "ofb-export-about-logo";
     logo.src = chrome.runtime.getURL("assets/temple-logo-light.svg");
     logo.alt = "Temple Consulting, LLC.";
-    logo.width = 96;
-    logo.height = 96;
+    logo.width = 112;
+    logo.height = 112;
+
+    const heading = document.createElement("div");
+    heading.id = "ofb-export-about-heading";
 
     const title = document.createElement("h2");
     title.id = "ofb-export-about-title";
     title.textContent = "OFB Order CSV Exporter";
 
-    const summary = document.createElement("p");
-    summary.id = "ofb-export-about-summary";
-    summary.textContent = "Turns complete Primarius order details into a structured, analysis-ready CSV.";
+    const tagline = document.createElement("p");
+    tagline.id = "ofb-export-about-tagline";
+    tagline.textContent = "Order data, ready for analysis";
+
+    const description = document.createElement("p");
+    description.id = "ofb-export-about-description";
+    description.textContent = "Exports complete Primarius order details as a structured CSV.";
+    heading.append(title, tagline, description);
+
+    const identity = document.createElement("div");
+    identity.id = "ofb-export-about-identity";
+    identity.append(logo, heading);
 
     const facts = document.createElement("dl");
     facts.id = "ofb-export-about-facts";
 
     const maker = document.createElement("span");
     maker.append(
-      externalLink("Matt Geiger", "https://github.com/MattGeiger"),
+      externalLink("Matt Geiger", "https://www.geigertron.com/"),
       ", ",
       externalLink("Temple Consulting, LLC.", "https://templepdx.com/"),
       " 2026",
     );
     addFact(facts, "Made by", maker);
-    addFact(facts, "Made for", "Oregon Food Bank");
+    addFact(facts, "Made for", externalLink("Oregon Food Bank", "https://www.oregonfoodbank.org/"));
     addFact(facts, "Made with", "JavaScript, Chrome Extensions, and Codex");
     addFact(facts, "Version", chrome.runtime.getManifest().version);
     addFact(facts, "License", "AGPL-3.0-only");
 
     const legal = document.createElement("p");
     legal.id = "ofb-export-about-legal";
-    legal.textContent = "This extension is open-source software. It processes order information locally and does not send it to another service.";
+    legal.textContent = "The extension code is open source. Oregon Food Bank and Primarius names and branding are not covered by the software license. Order information is processed locally and is not sent to the developer.";
 
     const source = externalLink(
       "Source Code on GitHub",
       "https://github.com/MattGeiger/ofb-order-csv-exporter",
     );
     source.id = "ofb-export-about-source";
+    source.prepend(createGithubIcon());
 
-    dialog.append(closeButton, logo, title, summary, facts, legal, source);
+    card.append(identity, facts, legal, source);
+    dialog.append(card, closeButton);
     dialog.addEventListener("click", (event) => {
       if (event.target === dialog) dialog.close();
     });

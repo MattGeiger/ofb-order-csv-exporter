@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "OFB Order CSV Exporter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Exports Oregon Food Bank Primarius order details as a CSV file.",
   "icons": {
     "16": "assets/Logo 16x.png",

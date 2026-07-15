@@ -95,9 +95,11 @@ vm.runInContext(fs.readFileSync(require.resolve("../page-bridge.js"), "utf8"), c
       totalRows: 38,
     },
   });
+  await new Promise((resolve) => setImmediate(resolve));
+  await new Promise((resolve) => setImmediate(resolve));
 
   assert.equal(ajaxOptions.url, "/PWW/Order/552543/GetDetailIndexData/");
-  assert.equal(ajaxOptions.data.pagesize, 38);
+  assert.equal(ajaxOptions.data.pagesize, 50);
   assert.equal(ajaxOptions.data.pagenum, 0);
   assert.equal(responseMessage.ok, true);
   assert.equal(responseMessage.rows.length, 38);

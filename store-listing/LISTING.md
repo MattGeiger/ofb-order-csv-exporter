@@ -8,16 +8,18 @@ OFB Order CSV Exporter
 
 **Summary**
 
-Export complete Oregon Food Bank Primarius order details as a locally generated CSV file.
+Export individual or date-range Oregon Food Bank Primarius orders as a local CSV.
 
 **Detailed description**
 
 OFB Order CSV Exporter adds an **Export as CSV** button to supported Oregon
-Food Bank Primarius View Order pages.
+Food Bank Primarius View Order pages and a completed-order batch panel to Order
+History.
 
-With one click, the extension reads the complete order-detail table—even when
-the page is displaying only a subset of its rows—and downloads an
-Excel-friendly CSV containing:
+For a single order, the extension reads the complete order-detail table—even
+when the page displays only part of it. For a date range, it previews all
+Confirmed orders by Delivery/Pickup date, processes them sequentially, and
+downloads one Excel-friendly CSV containing:
 
 - date and reporting period;
 - order and product numbers;
@@ -26,10 +28,11 @@ Excel-friendly CSV containing:
 - unit prices, price totals, service fees, and grants applied.
 
 The extension is intentionally narrow. It runs only on supported Primarius
-order-detail URLs, processes order information locally in Chrome, and does not
+Order History and order-detail URLs, processes order information locally in Chrome, and does not
 send order data, browsing activity, generated files, or analytics to the
-developer or another service. It refuses to create a partial export if the
-number of rows read does not match the total reported by Primarius.
+developer or another service. It refuses to create a partial export if any
+order fails or if a row count does not match the total reported by Primarius.
+Cancellation and an explicit per-order reconciliation report are included.
 
 This is an open-source utility made by Matt Geiger, Temple Consulting, LLC.
 
@@ -57,15 +60,15 @@ https://github.com/MattGeiger/ofb-order-csv-exporter/blob/main/PRIVACY.md
 
 **Single purpose**
 
-Export complete order-detail data from Oregon Food Bank Primarius View Order
-pages as a locally downloaded CSV file when the user requests it.
+Export individual or date-range completed order data from Oregon Food Bank
+Primarius as a locally downloaded CSV file when the user requests it.
 
 **Host access justification**
 
-Access is limited to
+Access is limited to `https://ofb.primarius.app/PWW/Order/Index*` and
 `https://ofb.primarius.app/PWW/Order/*/Detail/*`. The extension needs this
-access to read the order reference, pickup or delivery date, and complete
-order-detail table after the user chooses **Export as CSV**.
+access to find Confirmed orders by Delivery/Pickup date and read each complete
+order-detail table after the user requests an export.
 
 **Remote code**
 
@@ -102,7 +105,8 @@ Recommended regions: United States.
 ## Reviewer note
 
 The extension operates only after the reviewer reaches an authenticated Oregon
-Food Bank Primarius View Order page. It injects one **Export as CSV** control
-and an informational About control. No functionality runs on unrelated sites.
+Food Bank Primarius Order History or View Order page. It injects a date-range
+batch panel on Order History, and **Export as CSV** plus an informational About
+control on View Order. No functionality runs on unrelated sites.
 The package contains no remote code, analytics, advertising, or external data
 transmission.

@@ -7,6 +7,7 @@ const files = [
   "manifest.json",
   "content.css",
   "content.js",
+  "batch-content.js",
   "export-core.js",
   "page-bridge.js",
   "README.md",

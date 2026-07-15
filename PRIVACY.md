@@ -3,14 +3,15 @@
 Effective July 14, 2026
 
 OFB Order CSV Exporter processes Oregon Food Bank Primarius order information
-locally in the user's browser for the single purpose of creating a CSV file at
-the user's request.
+locally in the user's browser for the single purpose of creating individual or
+date-range CSV files at the user's request.
 
 ## Information processed
 
-On a matching Primarius **View Order** page, the extension reads only the
-information required for the export:
+On Primarius **Order History** and matching **View Order** pages, the extension
+reads only the information required for the export:
 
+- internal order IDs and statuses;
 - the order reference and pickup or delivery date;
 - product numbers and descriptions;
 - quantities and weights; and
@@ -18,14 +19,15 @@ information required for the export:
 
 This information is website content and may include financial information. The
 extension uses the user's existing signed-in Primarius session to request the
-complete order-detail table. It does not read, collect, or store passwords,
+completed-order index and complete order-detail tables. It does not read,
+collect, or store passwords,
 authentication cookies, or other login credentials.
 
 ## How information is used
 
 The information is transformed into the twelve-column CSV described in the
 project documentation. Processing occurs locally and begins only when the user
-chooses **Export as CSV**.
+chooses **Find completed orders**, **Export combined CSV**, or **Export as CSV**.
 
 ## Storage and retention
 
@@ -46,7 +48,9 @@ The extension runs only on URLs matching:
 
 `https://ofb.primarius.app/PWW/Order/*/Detail/*`
 
-It requests no access beyond that narrow Primarius order-detail pattern.
+`https://ofb.primarius.app/PWW/Order/Index*`
+
+It requests no access beyond these narrow Primarius order pages.
 
 ## Chrome Web Store Limited Use
 

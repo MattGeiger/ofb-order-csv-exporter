@@ -37,7 +37,7 @@
 
     const rows = Array.from(grid.querySelectorAll('[role="row"]'))
       .map((row) => Array.from(row.querySelectorAll('[role="gridcell"]')).map((cell) => cell.textContent.trim()))
-      .filter((cells) => /^\((?:C-)?\d{5}\)/i.test(cells[columnIndex.get("Product")] ?? ""))
+      .filter((cells) => /^\((?:C-)?\d{4,6}(?:[xz]|-z|\.[01])?\)/i.test(cells[columnIndex.get("Product")] ?? ""))
       .map((cells) => ({
         product: cells[columnIndex.get("Product")],
         quantity: cells[columnIndex.get("Qty")],

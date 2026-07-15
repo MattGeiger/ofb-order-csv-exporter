@@ -1,3 +1,129 @@
+#ofb-batch-export-panel {
+  background: #f5f8f6;
+  border: 1px solid #cbd8cf;
+  border-left: 5px solid #176b3a;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: #26332b;
+  margin: 0 0 16px;
+  padding: 16px;
+}
+
+#ofb-batch-title {
+  font-size: 18px;
+  font-weight: 650;
+  margin: 0 0 4px;
+}
+
+#ofb-batch-export-panel > p {
+  margin: 0 0 12px;
+}
+
+#ofb-batch-controls {
+  align-items: end;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+#ofb-batch-controls label {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  font-weight: 600;
+  gap: 4px;
+}
+
+#ofb-batch-controls input[type="date"] {
+  background: #fff;
+  border: 1px solid #9eaaa2;
+  border-radius: 4px;
+  color: #26332b;
+  font: inherit;
+  min-height: 38px;
+  padding: 6px 8px;
+}
+
+#ofb-batch-controls button {
+  border: 1px solid #10542d;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  min-height: 38px;
+  padding: 7px 12px;
+}
+
+#ofb-batch-find,
+#ofb-batch-export {
+  background: #176b3a;
+  color: #fff;
+}
+
+#ofb-batch-find:hover,
+#ofb-batch-export:hover {
+  background: #105c31;
+}
+
+#ofb-batch-cancel {
+  background: #fff;
+  border-color: #8a2d28 !important;
+  color: #8a2d28;
+}
+
+#ofb-batch-controls button:disabled,
+#ofb-batch-controls input:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+
+#ofb-batch-controls button:focus-visible,
+#ofb-batch-controls input:focus-visible,
+#ofb-batch-reconciliation summary:focus-visible {
+  outline: 3px solid #83c5ff;
+  outline-offset: 2px;
+}
+
+#ofb-batch-status {
+  color: #4d4d4d;
+  font-size: 13px;
+  margin: 12px 0 0 !important;
+}
+
+#ofb-batch-status[data-type="success"] {
+  color: #176b3a;
+  font-weight: 600;
+}
+
+#ofb-batch-status[data-type="error"] {
+  color: #a12622;
+  font-weight: 600;
+}
+
+#ofb-batch-reconciliation {
+  border-top: 1px solid #cbd8cf;
+  margin-top: 12px;
+  padding-top: 10px;
+}
+
+#ofb-batch-reconciliation summary {
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+#ofb-batch-reconciliation-output {
+  background: #fff;
+  border: 1px solid #d5ddd7;
+  border-radius: 4px;
+  font-size: 12px;
+  line-height: 1.5;
+  max-height: 300px;
+  overflow: auto;
+  padding: 10px;
+  white-space: pre-wrap;
+}
+
 #ofb-export-csv-panel {
   align-items: center;
   display: flex;
